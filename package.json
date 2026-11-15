@@ -1,0 +1,20 @@
+{
+  "name": "tilt",
+  "version": "1.0.0",
+  "description": "Tilt: clips, blips and games",
+  "main": "main.js",
+  "author": "Tilt",
+  "scripts": { "start": "electron .", "dist": "electron-builder" },
+  "dependencies": { "electron-updater": "^6.3.0" },
+  "devDependencies": { "electron": "latest", "electron-builder": "latest" },
+  "build": {
+    "appId": "com.tilt.app",
+    "productName": "Tilt",
+    "files": ["main.js", "index.html", "config.js", "build/**"],
+    "publish": [{ "provider": "github", "owner": "wow221113-dot.github.io", "repo": "tilt" }],
+    "win": { "target": "nsis", "icon": "build/icon.ico" },
+    "nsis": { "oneClick": true, "createDesktopShortcut": true, "createStartMenuShortcut": true },
+    "mac": { "target": "dmg", "icon": "build/icon.png" },
+    "linux": { "target": "AppImage", "icon": "build/icon.png" }
+  }
+}

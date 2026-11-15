@@ -1,0 +1,47 @@
+{
+  "rules": {
+    "tilt": {
+      "profiles": {
+        ".read": "auth != null",
+        "$uid": { ".write": "(auth != null && auth.uid == $uid && !root.child('tilt/bans/'+auth.uid).exists()) || (auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true)" }
+      },
+      "follows": {
+        ".read": "auth != null",
+        "$uid": { ".write": "(auth != null && auth.uid == $uid && !root.child('tilt/bans/'+auth.uid).exists()) || (auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true)" }
+      },
+      "posts": {
+        ".read": "auth != null",
+        "$uid": { ".write": "(auth != null && auth.uid == $uid && !root.child('tilt/bans/'+auth.uid).exists()) || (auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true)" }
+      },
+      "dms": {
+        "$sid": {
+          ".read": "auth != null && auth.uid == $sid",
+          ".write": "auth != null && auth.uid == $sid && !root.child('tilt/bans/'+auth.uid).exists()",
+          "to": { "$rid": { ".read": "auth != null && auth.uid == $rid" } }
+        }
+      },
+      "users": {
+        ".read": "auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true",
+        "$uid": {
+          ".read": "auth != null && auth.uid == $uid",
+          ".write": "(auth != null && auth.uid == $uid && !root.child('tilt/bans/'+auth.uid).exists()) || (auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true)"
+        }
+      },
+      "bans": {
+        ".read": "auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true",
+        "$uid": {
+          ".read": "auth != null && auth.uid == $uid",
+          ".write": "auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true"
+        }
+      },
+      "ov": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true"
+      },
+      "announce": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.token.email == 'wow22113@gmail.com' && auth.token.email_verified == true"
+      }
+    }
+  }
+}
